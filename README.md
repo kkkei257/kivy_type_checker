@@ -49,11 +49,13 @@ AnchorLayout:
           text: "CHECK"
           on_release: root.check()
 ~~~
-<br>
+
+
 ◯ポケモンの情報検索機能<br>
 ポケモンの情報検索にはUSUM API(https://usumapi.nelke.jp) を利用させていただきました。テキストボックスに検索したいポケモンの図鑑ナンバー又は名前(日本語名・英名可)を入力することで対象のポケモンの図鑑ナンバー・名前(日本語名と英名)・タイプ・特性を取得することができます。
 
 検索部分：<br>
 USUM APIの使用時には検索したいポケモンの図鑑ナンバー(no)と英名(key)を渡す必要があり、このnoとkeyについては別個にリスト(pkmn_data.txt)を作成してそこから検索するようにしています。なおこのデータについては同サイト様のページよりテキストをコピーさせていただきました。
-<br>
+
+
 <img src="Screenshot_1.png" width="24%"> <img src="Screenshot_3.png" width="24%"> <img src="Screenshot_2.png" width="24%"> <img src="Screenshot_4.png" width="24%">
