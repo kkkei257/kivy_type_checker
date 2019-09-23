@@ -1,0 +1,472 @@
+#:kivy 1.0
+#:import kivy kivy
+#:import main main
+
+Type_checker
+
+<Type_checker>:
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+#            source: 'images/background.jpg'
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        padding: '8dp'
+        spacing: '8dp'
+
+
+        Label:
+            size_hint_y: .1
+            text_size: self.size
+            halign: 'left'
+            valign: 'top'
+            text: "Type Checker"
+            color: 0, 0, 0, 1
+            font_size: 50
+
+        
+        BoxLayout:
+            size_hint_y: .1
+            Label:
+                size_hint_x: .2
+                size_hint_y: .6
+                text: "Search "
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+                color: 0, 0, 0, 1
+                font_size: 30
+                
+            TextInput:
+                id: search
+                size_hint_x: .7
+                size_hint_y: .6
+                halign: 'left'
+                valign: 'top'
+                hint_text: "Enter Pokemon's name"
+                
+            Button:
+                id: search_btn
+                size_hint_x: .2
+                size_hint_y: .6
+                text: "Go"
+                on_release: root.search()
+                
+            Label:
+                size_hint_x: .3
+                text: ""
+
+
+        Label:
+            size_hint_y: .1
+            text_size: self.size
+            halign: 'left'
+            valign: 'bottom'
+            text: "Defender"
+            color: 0, 0, 0, 1
+            font_size: 30
+
+        GridLayout:
+            size_hint_y: .5
+
+            cols: 6
+            rows: 3
+
+            spacing: 2
+            padding: 4
+
+            Button: 
+                text: "ノーマル"
+                background_normal: ''
+                background_down: ''
+                background_color: 174 / 255, 174  / 255, 174 / 255, root.seld_nor
+                on_release: root.select("d", "nor", [174 / 255, 174  / 255, 174 / 255, 1])
+            Button: 
+                text: "ほのお"
+                background_normal: ''
+                background_down: ''
+                background_color: 255 / 255, 167 / 255, 102 / 255, root.seld_fir
+                on_release: root.select("d", "fir", [255 / 255, 167 / 255, 102 / 255, 1])
+            Button: 
+                text: "みず"
+                background_normal: ''
+                background_down: ''
+                background_color: 100 / 255, 197 / 255, 247 / 255, root.seld_wat
+                on_release: root.select("d", "wat", [100 / 255, 197 / 255, 247 / 255, 1])
+            Button: 
+                text: "でんき"
+                background_normal: ''
+                background_down: ''
+                background_color: 231 / 255, 212 / 255, 0, root.seld_ele
+                on_release: root.select("d", "ele", [231 / 255, 212 / 255, 0, 1])
+            Button: 
+                text: "くさ"
+                background_normal: ''
+                background_down: ''
+                background_color: 154 / 255, 195 / 255, 14 / 255, root.seld_gra
+                on_release: root.select("d", "gra", [154 / 255, 195 / 255, 14 / 255, 1])
+            Button: 
+                text: "こおり"
+                background_normal: ''
+                background_down: ''
+                background_color: 96 / 255, 233 / 255, 245 / 255, root.seld_ice
+                on_release: root.select("d", "ice", [96 / 255, 233 / 255, 245 / 255, 1])
+
+            Button: 
+                text: "かくとう"
+                background_normal: ''
+                background_down: ''
+                background_color: 238 / 255, 105 / 255, 105 / 255, root.seld_fig
+                on_release: root.select("d", "fig", [238 / 255, 105 / 255, 105 / 255, 1])
+            Button: 
+                text: "どく"
+                background_normal: ''
+                background_down: ''
+                background_color: 171 / 255, 122 / 255, 202 / 255, root.seld_poi
+                on_release: root.select("d", "poi", [171 / 255, 122 / 255, 202 / 255, 1])
+            Button: 
+                text: "じめん"
+                background_normal: ''
+                background_down: ''
+                background_color: 200 / 255, 168 / 255, 65 / 255, root.seld_gro
+                on_release: root.select("d", "gro", [200 / 255, 168 / 255, 65 / 255, 1])
+            Button: 
+                text: "ひこう"
+                background_normal: ''
+                background_down: ''
+                background_color: 100 / 255, 167 / 255, 241 / 255, root.seld_fly
+                on_release: root.select("d", "fly", [100 / 255, 167 / 255, 241 / 255, 1])
+            Button: 
+                text: "エスパー"
+                background_normal: ''
+                background_down: ''
+                background_color: 235 / 255, 127 / 255, 244 / 255, root.seld_psy
+                on_release: root.select("d", "psy", [235 / 255, 127 / 255, 244 / 255, 1])
+            Button: 
+                text: "むし"
+                background_normal: ''
+                background_down: ''
+                background_color: 81 / 255, 203 / 255, 90 / 255, root.seld_bug
+                on_release: root.select("d", "bug", [81 / 255, 203 / 255, 90 / 255, 1])
+
+            Button: 
+                text: "いわ"
+                background_normal: ''
+                background_down: ''
+                background_color: 250 / 255, 199 / 255, 39 / 255, root.seld_roc
+                on_release: root.select("d", "roc", [250 / 255, 199 / 255, 39 / 255, 1])
+            Button: 
+                text: "ゴースト"
+                background_normal: ''
+                background_down: ''
+                background_color: 117 / 255, 110 / 255, 180 / 255, root.seld_gho
+                on_release: root.select("d", "gho", [117 / 255, 110 / 255, 180 / 255, 1])
+            Button: 
+                text: "ドラゴン"
+                background_normal: ''
+                background_down: ''
+                background_color: 255 / 255, 136 / 255, 89 / 255, root.seld_dra
+                on_release: root.select("d", "dra", [255 / 255, 136 / 255, 89 / 255, 1])
+            Button: 
+                text: "あく"
+                background_normal: ''
+                background_down: ''
+                background_color: 104 / 255, 129 / 255, 212 / 255, root.seld_dar
+                on_release: root.select("d", "dar", [104 / 255, 129 / 255, 212 / 255, 1])
+            Button: 
+                text: "はがね"
+                background_normal: ''
+                background_down: ''
+                background_color: 129 / 255, 138 / 255, 164 / 255, root.seld_ste
+                on_release: root.select("d", "ste", [129 / 255, 138 / 255, 164 / 255, 1])
+            Button: 
+                text: "フェアリー"
+                background_normal: ''
+                background_down: ''
+                background_color: 252 / 255, 119 / 255, 153 / 255, root.seld_fai
+                text_size: self.width, None
+                halign: 'center'
+                valign: 'center'
+                on_release: root.select("d", "fai", [252 / 255, 119 / 255, 153 / 255, 1])
+
+        BoxLayout:
+            size_hint_y: .05
+
+            spacing: 2
+            padding: 4
+
+            Label:
+                id: defense_label1
+                canvas.before:
+                    Color:
+                        rgba: root.defense_color1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            Label:
+                id: defense_label2
+                canvas.before:
+                    Color:
+                        rgba: root.defense_color2
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+
+
+        Label:
+            size_hint_y: .1
+            text_size: self.size
+            halign: 'left'
+            valign: 'bottom'
+            text: "Attacker"
+            color: 0, 0, 0, 1
+            font_size: 30
+
+        GridLayout:
+            size_hint_y: .5
+
+            cols: 6
+            rows: 3
+
+            spacing: 2
+            padding: 4
+            
+
+            Button: 
+                text: "ノーマル"
+                background_normal: ''
+                background_down: ''
+                background_color: 174 / 255, 174  / 255, 174 / 255, root.sela_nor
+                on_release: root.select("a", "nor", [174 / 255, 174  / 255, 174 / 255, 1])
+            Button: 
+                text: "ほのお"
+                background_normal: ''
+                background_down: ''
+                background_color: 255 / 255, 167 / 255, 102 / 255, root.sela_fir
+                on_release: root.select("a", "fir", [255 / 255, 167 / 255, 102 / 255, 1])
+            Button: 
+                text: "みず"
+                background_normal: ''
+                background_down: ''
+                background_color: 100 / 255, 197 / 255, 247 / 255, root.sela_wat
+                on_release: root.select("a", "wat", [100 / 255, 197 / 255, 247 / 255, 1])
+            Button: 
+                text: "でんき"
+                background_normal: ''
+                background_down: ''
+                background_color: 231 / 255, 212 / 255, 0, root.sela_ele
+                on_release: root.select("a", "ele", [231 / 255, 212 / 255, 0, 1])
+            Button: 
+                text: "くさ"
+                background_normal: ''
+                background_down: ''
+                background_color: 154 / 255, 195 / 255, 14 / 255, root.sela_gra
+                on_release: root.select("a", "gra", [154 / 255, 195 / 255, 14 / 255, 1])
+            Button: 
+                text: "こおり"
+                background_normal: ''
+                background_down: ''
+                background_color: 96 / 255, 233 / 255, 245 / 255, root.sela_ice
+                on_release: root.select("a", "ice", [96 / 255, 233 / 255, 245 / 255, 1])
+
+            Button: 
+                text: "かくとう"
+                background_normal: ''
+                background_down: ''
+                background_color: 238 / 255, 105 / 255, 105 / 255, root.sela_fig
+                on_release: root.select("a", "fig", [238 / 255, 105 / 255, 105 / 255, 1])
+            Button: 
+                text: "どく"
+                background_normal: ''
+                background_down: ''
+                background_color: 171 / 255, 122 / 255, 202 / 255, root.sela_poi
+                on_release: root.select("a", "poi", [171 / 255, 122 / 255, 202 / 255, 1])
+            Button: 
+                text: "じめん"
+                background_normal: ''
+                background_down: ''
+                background_color: 200 / 255, 168 / 255, 65 / 255, root.sela_gro
+                on_release: root.select("a", "gro", [200 / 255, 168 / 255, 65 / 255, 1])
+            Button: 
+                text: "ひこう"
+                background_normal: ''
+                background_down: ''
+                background_color: 100 / 255, 167 / 255, 241 / 255, root.sela_fly
+                on_release: root.select("a", "fly", [100 / 255, 167 / 255, 241 / 255, 1])
+            Button: 
+                text: "エスパー"
+                background_normal: ''
+                background_down: ''
+                background_color: 235 / 255, 127 / 255, 244 / 255, root.sela_psy
+                on_release: root.select("a", "psy", [235 / 255, 127 / 255, 244 / 255, 1])
+            Button: 
+                text: "むし"
+                background_normal: ''
+                background_down: ''
+                background_color: 81 / 255, 203 / 255, 90 / 255, root.sela_bug
+                on_release: root.select("a", "bug", [81 / 255, 203 / 255, 90 / 255, 1])
+
+            Button: 
+                text: "いわ"
+                background_normal: ''
+                background_down: ''
+                background_color: 250 / 255, 199 / 255, 39 / 255, root.sela_roc
+                on_release: root.select("a", "roc", [250 / 255, 199 / 255, 39 / 255, 1])
+            Button: 
+                text: "ゴースト"
+                background_normal: ''
+                background_down: ''
+                background_color: 117 / 255, 110 / 255, 180 / 255, root.sela_gho
+                on_release: root.select("a", "gho", [117 / 255, 110 / 255, 180 / 255, 1])
+            Button: 
+                text: "ドラゴン"
+                background_normal: ''
+                background_down: ''
+                background_color: 255 / 255, 136 / 255, 89 / 255, root.sela_dra
+                on_release: root.select("a", "dra", [255 / 255, 136 / 255, 89 / 255, 1])
+            Button: 
+                text: "あく"
+                background_normal: ''
+                background_down: ''
+                background_color: 104 / 255, 129 / 255, 212 / 255, root.sela_dar
+                on_release: root.select("a", "dar", [104 / 255, 129 / 255, 212 / 255, 1])
+            Button: 
+                text: "はがね"
+                background_normal: ''
+                background_down: ''
+                background_color: 129 / 255, 138 / 255, 164 / 255, root.sela_ste
+                on_release: root.select("a", "ste", [129 / 255, 138 / 255, 164 / 255, 1])
+            Button: 
+                text: "フェアリー"
+                background_normal: ''
+                background_down: ''
+                background_color: 252 / 255, 119 / 255, 153 / 255, root.sela_fai
+                text_size: self.width, None
+                halign: 'center'
+                valign: 'center'
+                on_release: root.select("a", "fai", [252 / 255, 119 / 255, 153 / 255, 1])
+
+        BoxLayout:
+            size_hint_y: .05
+
+            spacing: 2
+            padding: 4
+
+            Label:
+                id: attack_label
+                canvas.before:
+                    Color:
+                        rgba: root.attack_color
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+
+        # 真ん中に配置したいときにおすすめのレイアウト
+        AnchorLayout:
+            size_hint_y: .1
+
+            Button:
+                size_hint_x: .4
+                anchor_x: 'center'
+                anchor_y: 'center'
+                #pos: self.parent.x / 2 - self.parent.width / 2, self.parent.y
+                id: result
+                text: "CHECK"
+                on_release: root.check()
+
+
+
+# 結果を表示するポップアップ
+<PopupList>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    orientation: "vertical"
+
+    # ポップアップウィンドウ
+    BoxLayout:
+        orientation: 'vertical'
+        size: self.size
+
+        Label:
+            id: popup_label
+            color: 0, 0, 0, 1
+            font_size: 40
+            text: root.popup_text
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+
+    # ラベルとcancelボタン間を分けるためのラベル
+    Label:
+        canvas:
+            Color:
+                rgba: 0, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size_hint_y: .05
+        text: ""
+
+    # キャンセルボタン
+    BoxLayout:
+        size_hint: 1, .1
+        Button:
+            text: "Cancel"
+            background_normal: ''
+            background_color: 255 / 255, 199 / 255, 39 / 355, 1
+            on_release: root.cancel()
+
+<SearchList>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    orientation: "vertical"
+
+    # ポップアップウィンドウ
+    BoxLayout:
+        orientation: 'vertical'
+        size: self.size
+
+        Label:
+            id: searchs_label
+            color: 0, 0, 0, 1
+            font_size: 40
+            text: root.popup_text
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+
+    # ラベルとcancelボタン間を分けるためのラベル
+    Label:
+        canvas:
+            Color:
+                rgba: 0, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size_hint_y: .05
+        text: ""
+
+    # キャンセルボタン
+    BoxLayout:
+        size_hint: 1, .1
+        Button:
+            text: "Cancel"
+            background_normal: ''
+            background_color: 255 / 255, 199 / 255, 39 / 355, 1
+            on_release: root.cancel()

@@ -1,0 +1,4 @@
+title=type_checker
+author=Taka
+orientation=portrait
+
