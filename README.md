@@ -56,5 +56,63 @@ AnchorLayout:
 
 検索部分：<br>
 USUM APIの使用時には検索したいポケモンの図鑑ナンバー(no)と英名(key)を渡す必要があり、このnoとkeyについては別個にリスト(pkmn_data.txt)を作成してそこから検索するようにしています。なおこのデータについては同サイト様のページよりテキストをコピーさせていただきました。<br>
+~~~
+try:
+        # テキストデータ(pkmn_data.txt)を配列に格納
+        with open('pkmn_data.txt') as f:
+            lines = f.readlines()
+            data = [line.strip() for line in lines]
+
+        # データ中の\tを,に変換
+        for i in range(len(data)):
+            data[i] = data[i].replace('\t',',')
+
+        # データ中から入力されたポケモンを検索し該当するものがあればそのポケモンの番号と英名を取得
+        for i in data:
+            poke = i.split(',')
+            if pkmn == poke[1] or pkmn == poke[2]:
+                no = poke[0]
+                pkmn = poke[1]
+
+        """図鑑ナンバーと名前を用いてpokeAPIでポケモンのデータを検索"""
+        params = {
+            "no": no,
+            "key": pkmn,
+        }
+        p = urllib.parse.urlencode(params)
+        url = 'https://usumapi.nelke.jp/v1/pokemon/?' + p
+
+    except:
+        pass
+~~~
+
+リクエストによりポケモンに関する情報がjson形式で返されます。それを辞書型に変換し、配列で指定して必要なデータを取り出しています。
+~~~
+_no = ""
+_name = ""
+_type = ""
+_ability = ""
+
+try:
+    with urllib.request.urlopen(url) as res:
+        html = res.read().decode("utf-8")
+        jsn = json.loads(html) # json形式を辞書型に変換
+
+        _no = str(jsn['results'][0]['no'])
+        _name = jsn['results'][0]['names'][0]['name'] + " / " + jsn['results'][0]['names'][1]['name']
+        _type = jsn['results'][0]['types'][0]['type']['names'][1]['name']
+        try:
+            _type = _type + ", " + jsn['results'][0]['types'][1]['type']['names'][1]['name']
+        except:
+            pass
+        _ability = jsn['results'][0]['abilities'][0]['ability']['names'][0]['name']
+        try:
+            _ability = _ability + "," + jsn['results'][0]['abilities'][1]['ability']['names'][0]['name']
+        except:
+            pass
+
+except:
+    return("Error.")
+~~~
 
 <img src="Screenshot_1.png" width="24%"> <img src="Screenshot_3.png" width="24%"> <img src="Screenshot_2.png" width="24%"> <img src="Screenshot_4.png" width="24%">
