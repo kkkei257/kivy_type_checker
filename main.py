@@ -24,6 +24,7 @@ from kivy.properties import StringProperty, ListProperty, ObjectProperty
 from kivy.utils import get_color_from_hex
 from kivy.resources import resource_add_path
 from kivy.factory import Factory
+from kivy.clock import Clock
 
 import os
 import csv
@@ -156,6 +157,10 @@ class Type_checker(BoxLayout):
     # アプリ実行時の初期化の処理
     def __init__(self, **kwargs):
         super(Type_checker, self).__init__(**kwargs)
+        Clock.schedule_once(self.on_start)
+
+        
+    def on_start(self, *args):
         self.attack_color = [1, 1, 1, 1]
         self.defense_color1 = [1, 1, 1, 1]
         self.defense_color2 = [1, 1, 1, 1]
@@ -163,7 +168,7 @@ class Type_checker(BoxLayout):
         self.attack_list = [""] * 1
         self.defense_list = [""] * 2
         self.init_btn()
-
+        
 
     def init_btn(self):
         """ボタンの濃さを初期化する"""
