@@ -1,4 +1,4 @@
-# kivy_type_checker
+# kivy_type_checker（2019年）
 
 ## 概要
 <br>スクリーンショット：<br>
